@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#send-container{
+    position: fixed;
+    left: 25%;
+    bottom: 10px;
+}
+#message-container{
+    padding: 0;
+    margin: 0;
+}
+#message-field{
+    font-size: 20pt;
+}
+#send-button{
+    height: 40px;
+    width: 100px;
+}
+
+#message{
+    height: 100px;
+    background-color: tan;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    border: 2px solid darkgray;
+}
