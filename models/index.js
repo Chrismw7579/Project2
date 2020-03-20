@@ -1,3 +1,7 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+/* eslint-disable no-redeclare */
+/* eslint-disable no-undef */
 'use strict';
 
 var fs        = require('fs');
