@@ -1,0 +1,2 @@
+this folder will contain all the html files that will be dynamically
+send to the user
