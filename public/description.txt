@@ -1,2 +1,0 @@
-this folder will be sent with express.static
-the user will always have the 'assets' folder when on the site
