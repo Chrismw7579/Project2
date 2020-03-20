@@ -1,8 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-undef */
-/* eslint-disable quotes */
-/* eslint-disable indent */
-/* eslint-disable linebreak-style */
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
