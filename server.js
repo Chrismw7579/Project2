@@ -1,47 +1,30 @@
-/* eslint-disable no-undef */
-const express = require('express');
-const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+// Requiring necessary npm packages
+var express = require("express");
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
+// Setting up port and requiring models for syncing
+var PORT = process.env.PORT || 8080;
+var db = require("./models");
 
+// Creating express app and configuring middleware needed for authentication
+var app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
+// Requiring our routes
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// =============================================
-// send files to client
-app.get('/', function (req, res) {
-	res.sendFile(__dirname + '/html/live_chat.html');
-});
-app.use(express.static('public'));
-// ==============================================
-
-//handles all client responses
-io.on('connection', function (socket) {
-	//identifies new user
-	console.log('New User');
-	socket.emit('chat-message', 'Welcome!');
-	//client responses
-	socket.on('send-chat-message', (data) => {
-		socket.broadcast.emit('new-message', data);
-	});
-});
-//confirms server is listening on the right port
-http.listen(3000, function () {
-	console.log('listening on *:3000');
+// Syncing our database and logging a message to the user upon success
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  });
 });
