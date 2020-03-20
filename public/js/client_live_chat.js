@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 const socket = io();
 const messageForm = document.getElementById('send-container');
