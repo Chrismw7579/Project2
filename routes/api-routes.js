@@ -73,4 +73,23 @@ module.exports = function(app) {
 			});
 		}
 	});
+
+	app.get("/api/others", (req, res) => {
+		console.log("ID: " + req.body.id);
+		db.Info.findOne({attributes:['location']},{
+			where: {
+				id: req.body.name
+			}
+		}).then((data) => {
+			console.log(data.location);
+			db.Info.findAll({
+				where: {
+					location: data.location
+				}
+			}).then(data => {
+				console.log(data);
+				res.json(data);
+			});
+		});
+	});
 };
