@@ -74,22 +74,103 @@ module.exports = function(app) {
 		}
 	});
 
+	
+	// Route for returning to the user other members with the most common interests
 	app.get("/api/others", (req, res) => {
-		console.log("ID: " + req.body.id);
-		db.Info.findOne({attributes:['location']},{
+		// Finds the users location
+		let interests = '';
+		db.Info.findOne({
 			where: {
-				id: req.body.name
+				id: req.body.id
 			}
 		}).then((data) => {
-			console.log(data.location);
+
+			// Querys server for all members with same location
+			interests = data.dataValues.interest;
+			
 			db.Info.findAll({
 				where: {
-					location: data.location
+					location: data.dataValues.location
 				}
 			}).then(data => {
-				console.log(data);
-				res.json(data);
+				res.json(sortByInterest(req.body.id, interests, data));
 			});
 		});
 	});
+
+	// Parses the raw data and returns a list of objects with id, name, location, about info,
+	// and the list of common interests as parameters.
+	const sortByInterest = (id, interests, data) => {
+		console.log('sortby');
+		const compatibilityList = [];
+		
+		const UserInterests = interests.split(',');
+		console.log("data");
+		let OthersInterests = [];
+
+		console.log(data.length);
+		for (let i = 0; i < data.length; i++) {
+			if (id != data[i].dataValues.id) { // excludes the user from the list
+				
+				const obj = {
+					id: data[i].dataValues.id,
+					username: data[i].dataValues.username,
+					location: data[i].location,
+					aboutMe: data[i].aboutMe,
+					list: []
+				};
+
+				OthersInterests = data[i].dataValues.interest.split(',');
+				obj.list = sort(UserInterests, OthersInterests);
+				compatibilityList.push(obj);
+			}
+		}
+		console.log(compatibilityList);
+		return(findMostCompatible(5, compatibilityList));
+	};
+
+	// Takes a count for the number of objects to return and a list of objects that 
+	// each contain the common interests of each member then Sorts the members
+	// by the number of common interests and returns a list of objects.
+	const findMostCompatible = (count, list) => {
+		console.log('find');
+		const compatibilityList = [];
+		const tempList = [...list];
+		let listCount = 0;
+
+		while(listCount < count && tempList.length > 0) {
+			let index = 0;
+			let mostInCommon = tempList[index];
+			for (let i = 0; i < tempList.length - 1; i++) {
+				
+				if (mostInCommon.list.length < tempList[i + 1].list.length) {
+					mostInCommon = tempList[i + 1];
+					index = i + 1;
+					
+				} 
+			}
+			
+			tempList.splice(index, 1);
+			compatibilityList.push(mostInCommon);
+			listCount++;
+		}
+		// console.log(compatibilityList);
+		return(compatibilityList);
+	};
+
+	// Takes two lists of interests as parameters and returns a list with common interests
+	const sort = (first, last) => {
+		let count = 0;
+		let list = [];
+		for (let i = 0; i < first.length; i++) {
+			for (let j = 0; j < last.length; j++) {
+				if (first[i] === last[j]) {
+					list[count] = [first[i]];
+					count++;
+				}
+			}
+		}		
+		return(list);
+	};
+
 };
