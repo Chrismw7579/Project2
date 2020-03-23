@@ -23,7 +23,9 @@ module.exports = function(app) {
 		let interest = req.body.interest;
 		let aboutMe = req.body.aboutMe;
 		let available = req.body.available;
-    
+		console.log(username + " " + location + " " + interest + " " + aboutMe + " " + available);
+		console.log(req.body.email);
+		console.log(req.body.password);
 		db.User.create({
 			email: req.body.email,
 			password: req.body.password
@@ -33,7 +35,7 @@ module.exports = function(app) {
 				console.log("HIT!!");
 				console.log(data.dataValues.id);
 				console.log("END!!");
-				console.log(username + " " + location + " " + interest + " " + aboutMe + " " + available)
+				console.log(username + " " + location + " " + interest + " " + aboutMe + " " + available);
 				db.Info.create({
 					username: username,
 					location: location,

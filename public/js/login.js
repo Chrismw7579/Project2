@@ -14,7 +14,7 @@ $(document).ready(function() {
 		var userData = {
 			email: emailInput.val().trim(),
 			password: passwordInput.val().trim()
-		};
+		}; 
 
 		if (!userData.email || !userData.password) {
 			return;

@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Passport Authentication</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/members-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-
 <body>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Welcome @</a>
+
+        <label class="switchBtn">
+          <input type="checkbox">
+          <div class="slide round"></div>
+        </label>
+        <span class = "status">Available</span>
+
     </div>
-  </div>
-</nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
+  </nav>
+
+    <div class="container">
+
+      <div class = "row">
+        <div class = "col s12">
+          <div class="bottom">
+            <div class="col s12 m6 offset-m3 my-wrapper valign-wrapper center-align">
+              <div class="card">
+                <div class="card-content">
+                  <span class="card-title">Hello!</span>
+                  <p>Welcome to _____, a way to meet others who share your same interests. Want to hangout?</p>
+                </div>
+                <div class="card-action">
+                  <button class="btn btn-large indigo waves-effect waves-light" type="submit" name="action">Hangout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
 
 </body>
 

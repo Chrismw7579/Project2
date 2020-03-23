@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "password123",
+    "password": "Lionroar*7",
     "database": "hangout",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "Lionroar*7",
+    "database": "hangout",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
