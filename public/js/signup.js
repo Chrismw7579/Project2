@@ -8,15 +8,33 @@ $(document).ready(function() {
   var interestInput = $("input#interest-input");
   var aboutMeInput = $("#about-input");
 
-  // When the signup button is clicked, we validate the email and password are not blank
+  let cityNameInput;
+
+  populateLocationDropdown();
+  $('.dropdown-toggle').dropdown();
+
+// Get the selected location from dropdown
+
+    $(".dropdown-item").on("click", function(){
+      cityNameInput = $(this)[0].text;
+      console.log(cityNameInput);
+  });
+
+ // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
     event.preventDefault();
+    let selectedInterests = [];
+
+    $('#checkboxes input:checked').each(function() {
+        selectedInterests.push($(this).attr('name'));
+    });
+
     var userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
       username: userNameInput.val().trim(),
-      location: cityInput.val().trim(),
-      interest: interestInput.val().trim(),
+      location: cityNameInput.trim(),
+      interest: selectedInterests.toString(),
       aboutMe: aboutMeInput.val().trim(),
       available: 1
     };
@@ -25,6 +43,9 @@ $(document).ready(function() {
       return;
     }
     // If we have an email and password, run the signUpUser function
+
+    console.log(userData.email + " " + userData.password + " " + userData.username + " " + userData.location + " " + userData.interest + " " + userData.aboutMe + " " + userData.available);
+
     signUpUser(userData.email, userData.password, userData.username, userData.location, userData.interest, userData.aboutMe, userData.available);
     emailInput.val("");
     passwordInput.val("");
@@ -53,4 +74,20 @@ $(document).ready(function() {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
+
+  function populateLocationDropdown(){
+    for(i=0; i<cityNames.length; i++){
+      let anchorItem = $("<a>");
+      anchorItem.attr("class", "dropdown-item");
+      anchorItem.text(cityNames[i]);
+
+      let listItem = $("<li>");
+      listItem.append(anchorItem);
+     
+      $(".dropdown-menu").append(listItem);
+    }
+  }
 });
+
+
+

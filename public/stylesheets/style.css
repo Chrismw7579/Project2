@@ -2,3 +2,15 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+html,
+body {
+  height: 135%;
+  width: 100%;
+  background-image: url('../img/bg1.jpg');
+  background-size: cover;
+  background-color: lightgray;
+  margin: 0;
+  padding: 0;
+  /* background-repeat: repeat-y; */
+}
