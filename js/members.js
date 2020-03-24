@@ -19,9 +19,6 @@ $(document).ready(function() {
 
 
 
-<<<<<<< HEAD
-});
-=======
 
 
 
@@ -88,4 +85,3 @@ $(document).ready(function() {
   //   $("#cardsHolderDiv").append(divCard);
 
   // }
->>>>>>> deepika-branch
