@@ -26,7 +26,7 @@ module.exports = function (app) {
     res.send(getChatrooms(req.user.id));
   });
 
-  app.get('/members/chatrooms/room/:roomid/:action', (req, res) => {
+  app.get('/members/chatrooms/room/:roomid', (req, res) => {
     // this path sends the chat room html page
     if (!req.user) {
       res.redirect('/members');

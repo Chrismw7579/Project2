@@ -18,7 +18,6 @@ module.exports = function (app) {
 						id: response.room,
 						action: response.value
 					};
-					console.log(newRes);
 					res.send(newRes);
 				} else {
 					console.log('making a new room');
@@ -28,20 +27,31 @@ module.exports = function (app) {
 								id: response.room,
 								action: response.value
 							};
-							console.log(newRes);
 							res.send(newRes);
 						});
 				}
 			});
+	});
+	app.get('/members/chatrooms/room/:roomid/oldData', (req, res) => {
+		// this path sends the chat room html page
+		if (!req.user) {
+			res.redirect('/members');
+		}
+		let room = req.params.roomid;
+		db.Message.findAll({
+			where: {
+				RoomId: room
+			}
+		}).then((messages) => {
+			res.json(messages);
+		});
 	});
 	function checkRoom(id1, id2) {
 		return new Promise((resolve, reject) => {
 			db.Room.findAll()
 				.then((response) => {
 					for (let i = 0; i < response.length; i++) {
-						console.log((response[i].guest == id2 && response[i].UserId == id1));
-						console.log((response[i].guest == id1 && response[i].UserId == id2));
-						if ( (response[i].guest == id2 && response[i].UserId == id1) || (response[i].guest == id1 && response[i].UserId == id2)) {
+						if ((response[i].guest == id2 && response[i].UserId == id1) || (response[i].guest == id1 && response[i].UserId == id2)) {
 							resolve({
 								value: true,
 								room: response[i].id
@@ -70,9 +80,6 @@ module.exports = function (app) {
 				reject(err);
 			});
 		});
-	}
-	function updateRoomData(newMessage) {
-		// this function will be used to add new chat messages to the rooms internal storage
 	}
 	function getRoomData(roomid) {
 		// gets the past message data from a room and sends it back to the user

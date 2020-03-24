@@ -32,6 +32,16 @@ function joinRoom(roomId) {
 
 function reloadOldData(roomId) {
 	// this function will make a request to the server to get the rooms stored chat messages
+	fetch(`/members/chatrooms/room/${roomId}/oldData`)
+		.then((data) => {
+			return data.json();
+		}).then((response) => {
+			response.forEach(element => {
+				let userName = element.name;
+				if (userName == currentUserEmail) { userName = 'You'; }
+				appendMessage(`${userName}: ${element.data}`);
+			});
+		});
 }
 
 function appendMessage(message) {
@@ -43,6 +53,9 @@ function appendMessage(message) {
 function init() {
 	// this function will connect to the private room and if it was an existing room, then repopulate the client with the old messages of the chat
 	joinRoom(currentRoom);
+	if (currentAction) {
+		reloadOldData(currentRoom);
+	}
 }
 
 init();

@@ -7,10 +7,6 @@ module.exports = function (sequelize, DataTypes) {
 		guest: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		data: {
-			type: DataTypes.STRING,
-			allowNull: false
 		}
 	});
 
@@ -21,6 +17,9 @@ module.exports = function (sequelize, DataTypes) {
 			},
 			onDelete: "cascade"
 		});
+	};
+	Room.associate = function(models){
+		Room.hasOne(models.Message);
 	};
 	return Room;
 };

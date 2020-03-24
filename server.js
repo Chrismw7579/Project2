@@ -31,7 +31,7 @@ app.use(passport.session());
 
 // Requiring our routes
 require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app, io);
+require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function () {
@@ -53,5 +53,23 @@ io.on('connection', socket => {
 	socket.on('send-chat-message', (room, userName, message) => {
 		console.log('new message recieved');
 		socket.to(room).broadcast.emit('chat-message', { message: message, name: userName });
+		db.Room.findAll(
+			{
+				where: {
+					id: room
+				}
+			}
+		).then((foundRoom) => {
+			return foundRoom[0].id;
+		}).then((roomid) => {
+			db.Message.create(
+				{
+					name: userName,
+					data: message,
+					RoomId: roomid
+				}
+			);
+		});
+
 	});
 });
