@@ -113,7 +113,6 @@ module.exports = function(app) {
 					username: data[i].dataValues.username,
 					location: data[i].location,
 					aboutMe: data[i].aboutMe,
-					available: data[i].available,
 					list: []
 				};
 
