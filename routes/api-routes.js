@@ -74,14 +74,13 @@ module.exports = function(app) {
 		}
 	});
 
-	
 	// Route for returning to the user other members with the most common interests
 	app.get("/api/others", (req, res) => {
 		// Finds the users location
 		let interests = '';
 		db.Info.findOne({
 			where: {
-				id: req.body.id
+				id: req.user.id
 			}
 		}).then((data) => {
 
@@ -93,7 +92,7 @@ module.exports = function(app) {
 					location: data.dataValues.location
 				}
 			}).then(data => {
-				res.json(sortByInterest(req.body.id, interests, data));
+				res.json(sortByInterest(req.user.id, interests, data));
 			});
 		});
 	});
@@ -101,14 +100,11 @@ module.exports = function(app) {
 	// Parses the raw data and returns a list of objects with id, name, location, about info,
 	// and the list of common interests as parameters.
 	const sortByInterest = (id, interests, data) => {
-		console.log('sortby');
-		const compatibilityList = [];
 		
+		const compatibilityList = [];
 		const UserInterests = interests.split(',');
-		console.log("data");
 		let OthersInterests = [];
 
-		console.log(data.length);
 		for (let i = 0; i < data.length; i++) {
 			if (id != data[i].dataValues.id) { // excludes the user from the list
 				
@@ -125,7 +121,7 @@ module.exports = function(app) {
 				compatibilityList.push(obj);
 			}
 		}
-		console.log(compatibilityList);
+		
 		return(findMostCompatible(5, compatibilityList));
 	};
 
@@ -133,7 +129,7 @@ module.exports = function(app) {
 	// each contain the common interests of each member then Sorts the members
 	// by the number of common interests and returns a list of objects.
 	const findMostCompatible = (count, list) => {
-		console.log('find');
+		
 		const compatibilityList = [];
 		const tempList = [...list];
 		let listCount = 0;
@@ -146,15 +142,13 @@ module.exports = function(app) {
 				if (mostInCommon.list.length < tempList[i + 1].list.length) {
 					mostInCommon = tempList[i + 1];
 					index = i + 1;
-					
 				} 
 			}
-			
+
 			tempList.splice(index, 1);
 			compatibilityList.push(mostInCommon);
 			listCount++;
 		}
-		// console.log(compatibilityList);
 		return(compatibilityList);
 	};
 
@@ -172,5 +166,4 @@ module.exports = function(app) {
 		}		
 		return(list);
 	};
-
 };
