@@ -91,7 +91,7 @@ module.exports = function(app) {
 		let interests = '';
 		db.Info.findOne({
 			where: {
-				id: req.body.id
+				id: req.user.id
 			}
 		}).then((data) => {
 
@@ -103,7 +103,7 @@ module.exports = function(app) {
 					location: data.dataValues.location
 				}
 			}).then(data => {
-				res.json(sortByInterest(req.body.id, interests, data));
+				res.json(sortByInterest(req.user.id, interests, data));
 			});
 		});
 	});
