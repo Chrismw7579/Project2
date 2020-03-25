@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>Passport Authentication</title>
+  <title>Hangout</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 <style>
@@ -16,17 +18,181 @@
     max-height: 200px;
     overflow-y: auto;
   }
+  html,
+  body {
+    height: 150%;
+    width: 100%;
+    background-image: url('./img/bg1.jpg');
+    background-size: cover;
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    /* background-repeat: repeat-y; */
+}
   @media screen and (max-width: 768px){
     
     body {
         background-image: url("./img/bg2.jpg");
         background-size: cover;
+        
     }
 }
 </style>
 
 <body>
-  <div class="container">
+ 
+  <div class = "row">
+    <form class = "signup">
+    <div class = "col s12 m6 offset-m3">
+      <div class = "card">
+        <div class = "card-action indigo lighten-2 white-text">
+          <h3 class = "signup" style="color:white">Sign Up</h3>
+        </div>
+        <div class = "card-content">
+          <div class = "form-field">
+            <label for = "email-input">Email address</label>
+            <input type = "text" id = "email-input"style="color:black">
+          </div><br>
+          <div class = "form-field">
+            <label for = "password-input">Password</label>
+            <input type = "password" id = "password-input"style="color:black">
+          </div><br>
+
+          <div class = "form-field">
+            <label for = "username-input">Username</label>
+            <input type = "text" id = "username-input"style="color:black">
+          </div><br>
+
+          <p class="para"> Choose your location</p>
+          <br>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle indigo lighten-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Choose Location
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+           
+            </ul>
+          </div>
+
+          <br>
+
+        <!-- <p>Choose your location</p>
+        <a class='dropdown-trigger btn indigo lighten-2' href='#' data-target='dropdown1'>Choose Location</a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="#!">three</a></li>
+          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+        </ul> -->
+
+        <!-- <a class='dropdown-trigger btn indigo lighten-2' href='#' data-target='city-input'>Choose Location</a>
+       
+        <ul id='city-input' class='dropdown-menu'>
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="#!">three</a></li>
+          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+        </ul> -->
+        <br>
+
+        <p class="para">Choose your topics of interest. This will be used to help us find like-minded people for you to hangout with.</p>
+        <br>
+        <hr>
+        
+        <div class="form-group indigo lighten-2">
+          <div id="checkboxes" style="padding: 5px;">
+          <label style="color:white; font-size:medium"><input id="chkbx_0" type="checkbox" name="Travel"/><span></span> Travel</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_1" type="checkbox" name="Movies"/><span></span> Movies </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_2" type="checkbox" name="Rock Music"/><span></span> Rock Music </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_3" type="checkbox" name="HeavyMetal Music"/><span></span> HeavyMetal Music </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_4" type="checkbox" name="Hip Hop Music"/><span></span> Hip Hop Music</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_5" type="checkbox" name="Jazz"/><span></span> Jazz </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_6" type="checkbox" name="Country Music"/><span></span> Country Music </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_7" type="checkbox" name="Punk Rock"/><span></span> RHeavyMetal Music </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_8" type="checkbox" name="Fashion"/><span></span> Fashion</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_9" type="checkbox" name="Photography"/><span></span> Photography </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_10" type="checkbox" name="Shopping"/><span></span> Shopping </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_11" type="checkbox" name="Advertising"/><span></span> Advertising </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_12" type="checkbox" name="Democrat Party"/><span></span> Democrat Party</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_13" type="checkbox" name="Republican Party"/><span></span>Republican Part </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_14" type="checkbox" name="Politics"/><span></span> Politics</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_18" type="checkbox" name="Fishing"/><span></span> Fishing</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_15" type="checkbox" name="Games"/></span> Games</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_16" type="checkbox" name="American Football"/><span></span> American Football" </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_17" type="checkbox" name="Hiking"/><span></span> Hiking </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_19" type="checkbox" name="Cooking"/><span></span> Cooking</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_20" type="checkbox" name="Family/Home-making/Kids"/><span></span> Family/Home-making/Kids</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_21" type="checkbox" name="Home Organization"/><span></span> Home Organization </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_22" type="checkbox" name="Charity/Volunteering"/><span></span> Charity/Volunteering </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_23" type="checkbox" name="Vegan Lifestyle"/><span></span> Vegan Lifestyle </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_24" type="checkbox" name="Keto Diet"/><span></span> Keto Diet </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_25" type="checkbox" name="Paleo Diet"/><span></span> Paleo Diet </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_26" type="checkbox" name="Holistic Health"/><span></span> Holistic Health </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_27" type="checkbox" name="Coding"/><span></span> Coding </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_28" type="checkbox" name="Youtube Vlogging"/><span></span> Youtube Vlogging </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_29" type="checkbox" name="Blogging"/><span></span> Blogging </label>
+          <label style="color:white; font-size:medium"><input id="chkbx_30" type="checkbox" name="Books"/><span></span> Books</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_31" type="checkbox" name="Electronics"/><span></span> Electronics</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_32" type="checkbox" name="Space/Astronomy"/><span></span> Space/Astronomy</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_33" type="checkbox" name="Animals"/><span></span> Animals</label>
+          <label style="color:white; font-size:medium"><input id="chkbx_34" type="checkbox" name="Retirement"/><span></span> Retirement</label>
+
+           
+          </div>
+        
+      </div>
+    </hr>
+        
+       
+
+        <div class = "form-field">
+          <label for = "about-input">About Me</label>
+          <input type = "text" id = "about-input" style="color:black">
+        </div><br>
+          
+          <div class = "form-field">
+            <button class = "btn-large waves-effect waves-dark indigo lighten-2" type = "submit" style = "width: 100%">Sign Up</button>
+          </div><br>
+          <p class="para"> <a href="/login">Or login here.</a></p>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/cityNames.js"></script>
+  <script type="text/javascript" src="js/signup.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2  style="color: white;">Sign Up</h2>
@@ -45,7 +211,6 @@
             <label for="exampleInputEmail1">UserName</label>
             <input style="border-style: solid;border-color:#9370DB;border-width: thick;" type="name" class="form-control" id="username-input" placeholder="UserName">
           </div>
-
           <br> 
           <p> Choose your location</p>
           <div class="dropdown">
@@ -56,9 +221,7 @@
            
             </ul>
           </div>
-
           <br>
-
           <div class="form-group">
             <label for="exampleInputEmail1">About Me</label>
             <textarea style="border-style: solid;border-color:#9370DB;border-width: thick;" class="form-control" id="about-input" placeholder="About Me"></textarea>
@@ -66,7 +229,6 @@
           <hr>
           <p>Choose your topics of interest. This will be used to help us find like-minded people for you to hangout with.</p>
           <hr>
-
           <div class="form-group" style="opacity:0.9; border-style: solid; border-color: gray; background-color: #9370DB;">
             
               <div id="checkboxes" style="padding: 5px;">
@@ -108,9 +270,7 @@
               </div>
             
           </div>
-
           <hr>
-
           <div style="display: none" id="alert" class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span> <span class="msg"></span>
@@ -122,12 +282,11 @@
       </div>
     </div>
   </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/cityNames.js"></script>
-  <script type="text/javascript" src="js/signup.js"></script>
+  <script type="text/javascript" src="js/signup.js"></script> -->
 
 </body>
 </html>
