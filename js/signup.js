@@ -10,11 +10,8 @@ $(document).ready(function() {
 
   let cityNameInput;
 
-  //$('.dropdown-trigger').dropdown();
   populateLocationDropdown();
-  
   $('.dropdown-toggle').dropdown();
-  
 
 // Get the selected location from dropdown
 
@@ -79,14 +76,6 @@ $(document).ready(function() {
   }
 
   function populateLocationDropdown(){
-    // console.log("hiiii")
-    // for(i=0;i<cityNames.length;i++){
-    //   let listItem=$("<li>");
-    //   listItem.attr('class','city-input');
-    //   listItem.text(cityNames[i])
-  
-    //   $('#dropdown1').append(listItem);
-    // }
     for(i=0; i<cityNames.length; i++){
       let anchorItem = $("<a>");
       anchorItem.attr("class", "dropdown-item");
