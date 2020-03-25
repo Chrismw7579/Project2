@@ -100,15 +100,17 @@
 
   <nav>
     <div class="nav-wrapper indigo lighten-2">
-      <a href="#" class="brand-logo right m-2" style="margin-right: 10px">Welcome <span class="member-name"></a>
+      <span><a href="#" class="brand-logo right m-2" style="margin-right: 10px">Welcome <span class="member-name"></a>
       <a href="/logout" id="nav-mobile" class="left m-2" style="margin-left: 10px; margin-right: 20px; ">Logout</a>
+      <a href="" id = "delete-account" class="left m-2" style="margin-left: 10px; margin-right: 20px; ">Delete Account</a>
       </span><span>  <div class="switch">
       <label>
         <input type="checkbox" id="availabilitySwitch">
         <span class="lever"></span>
         <span style="color: white;">Available</span>
       </label>
-    </div></span>
+    </div> 
+  </span>
     </div>
   </nav>
 
@@ -119,7 +121,7 @@
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
           <div class="card-content">
             <span class="card-title">Hello!</span>
-            <p>Welcome to <p style="color:rebeccapurple; font-style: italic;">Rendevous</p>A way to meet others who share your same interests.</p><p>Wanna hangout?</p>
+            <p>Welcome to <p style="color:rebeccapurple; font-style: italic;">Rendezvous</p>A way to meet others who share your same interests.</p><p>Wanna hangout?</p>
           </div>
           <div class="card-action">
             <button id="findPeopleBtn" class="btn btn-large indigo lighten-2 waves-effect waves-light " type="submit" name="action">Hangout</button>
@@ -225,6 +227,28 @@
     </div>
 
   </div>
+
+
+  <div class="container" id="deletePage" style="display: none;">
+    <div class="bottom row">
+      <div class="col s12 m4 offset-m4 my-wrapper valign-wrapper center-align">
+        <div class="card firstPagecard hoverable" style="margin-top:10%; ">
+
+          <div class="card-content">
+            <span class="card-title" style="color:rebeccapurple;">We're sad to see you go.</span>
+            <p>Are you sure you want to delete your account?</p>
+          </div>
+          <div class="card-action">
+            <button id="deletebtn" class="btn btn-large blue lighten-2 waves-effect waves-light " type="submit" name="action">Delete Account</button>
+            <p><a href="/members" style="color:rebeccapurple; font-weight: bold;">I would like to keep my account.</a></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
 
 

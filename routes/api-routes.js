@@ -108,6 +108,18 @@ module.exports = function(app) {
 		});
 	});
 
+	app.delete('/api/users/:id', (req, res) => {
+		console.log("ID " + req.params.id);
+		db.User.destroy({
+		  where: {
+			id: req.params.id
+		  }
+		}).then(function() {
+		  console.log('deletion successful');
+		  res.redirect('/signup')
+		});
+	})
+
 	// Parses the raw data and returns a list of objects with id, name, location, about info,
 	// and the list of common interests as parameters.
 	const sortByInterest = (id, interests, data) => {
@@ -182,7 +194,6 @@ module.exports = function(app) {
 		}		
 		return(list);
 	};
-
 
 
 
