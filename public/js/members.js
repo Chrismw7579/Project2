@@ -269,9 +269,11 @@ $(document).ready(function() {
 
 
 
+  });//End of document.ready
+  
 
+  $(".dropdown-trigger").dropdown();
 
-	});//End of document.ready
 
 });
 

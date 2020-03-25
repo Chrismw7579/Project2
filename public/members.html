@@ -1,56 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="stylesheets/members-style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
-
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo right">Welcome @</a>
-
-        <label class="switchBtn">
-          <input type="checkbox">
-          <div class="slide round"></div>
-        </label>
-        <span class = "status">Available</span>
-
-    </div>
-  </nav>
-
-    <div class="container">
-      <div class = "row">
-        <div class = "col s12">
-          <div class="bottom">
-            <div class="col s12 m6 offset-m3 my-wrapper valign-wrapper center-align">
-              <div class="card">
-                <div class="card-content">
-                  <span class="card-title">Hello!</span>
-                  <p>Welcome to _____, a way to meet others who share your same interests. Want to hangout?</p>
-                </div>
-                <div class="card-action">
-                  <button class="btn btn-large indigo waves-effect waves-light" type="submit" name="action">Hangout</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/members.js"></script>
-
-</body>
-
-</html> -->
-
 <head>
   <title>Hangout</title>
   <meta charset="UTF-8">
@@ -61,7 +10,6 @@
   <link href="stylesheets/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANpJutX_zMEG-06f_Nb7iVDBZj7EwlCdY&libraries=places"></script> -->
 </head>
 <style>
   html,
@@ -73,7 +21,6 @@
     background-color: lightgray;
     margin: 0;
     padding: 0;
-    /* background-repeat: repeat-y; */
 }
 .container{
   width: 85%;
@@ -98,20 +45,32 @@
 
 <body>
 
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/logout" style="color:rebeccapurple; font-weight:bold;">Logout</a></li>
+    <li><a href="" id = "delete-account" style="color:rebeccapurple; font-weight: bold;">Delete Account</a></li>
+    <li class="divider"></li>
+  </ul>
+  
   <nav>
+
     <div class="nav-wrapper indigo lighten-2">
-      <span><a href="#" class="brand-logo right m-2" style="margin-right: 10px">Welcome <span class="member-name"></a>
-      <a href="/logout" id="nav-mobile" class="left m-2" style="margin-left: 10px; margin-right: 20px; ">Logout</a>
-      <a href="" id = "delete-account" class="left m-2" style="margin-left: 10px; margin-right: 20px; ">Delete Account</a>
-      </span><span>  <div class="switch">
-      <label>
-        <input type="checkbox" id="availabilitySwitch">
-        <span class="lever"></span>
-        <span style="color: white;">Available</span>
-      </label>
-    </div> 
-  </span>
+
+      <a href="#" class="brand-logo right m-2" style="margin-right: 10px">Welcome <span class="member-name"></span></a>
+        <ul id="nav-mobile" class="left m-2">
+          <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><span class = "hide-on-med-and-down">Settings</span><i class="material-icons left">arrow_drop_down</i></a></li>
+        </ul>          
+            <div class="switch">
+              <label>
+                <input type="checkbox" id="availabilitySwitch">
+                  <span class="lever"></span>
+                  <span class = "hide-on-med-and-down" style="color: white;">Available</span>
+              </label>
+            </div> 
     </div>
+
+
+
+
   </nav>
 
   <div class="container" id="firstPage">
@@ -239,7 +198,6 @@
             <p>Are you sure you want to delete your account?</p>
           </div>
           <div class="card-action">
-            <!-- <button id="deletebtn" class="btn btn-large blue lighten-2 waves-effect waves-light " type="submit" name="action">Delete Account</button> -->
             <a href = "/" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">Delete Account</a>
             <p><a href="/members" style="color:rebeccapurple; font-weight: bold;">I would like to keep my account.</a></p>
           </div>
