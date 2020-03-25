@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 		}).then(function(data){
 
-			console.log(data);
+			// console.log(data);
 
 
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
 
 					let searchLon = parseFloat(searchLonString).toFixed(3);
 
-					console.log(response);
+					// console.log(response);
 
 					initialize(searchLat, searchLon);
 
@@ -194,7 +194,7 @@ $(document).ready(function() {
 
 		var createMarker = function(latLon){
 
-			console.log('HIT HERE');
+			// console.log('HIT HERE');
 
 			marker = new google.maps.Marker({
 

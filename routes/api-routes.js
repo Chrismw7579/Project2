@@ -68,7 +68,7 @@ module.exports = function(app) {
           UserId: req.user.id
         }
       }).then(function(results){
-        console.log(results);
+        // console.log(results);
         res.json({
           email: req.user.email,
           id: req.user.id,
@@ -115,8 +115,9 @@ module.exports = function(app) {
 			id: req.params.id
 		  }
 		}).then(function() {
-		  console.log('deletion successful');
-		  res.redirect('/signup')
+		  console.log(req.body);
+		  console.log('Deletion successful');
+		  res.redirect('/');
 		});
 	})
 
