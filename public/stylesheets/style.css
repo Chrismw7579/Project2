@@ -6,11 +6,15 @@ form.login {
 html,
 body {
   height: 135%;
-  width: 120%;
+  width: 100%;
   background-image: url('../img/bg1.jpg');
   background-size: cover;
   background-color: lightgray;
   margin: 0;
   padding: 0;
   /* background-repeat: repeat-y; */
+}
+
+.para{
+  color: black;
 }

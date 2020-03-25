@@ -185,35 +185,35 @@ module.exports = function(app) {
 
 //update the toggle switch value in db
 
-	app.put("/api/availability", (req, res)=>{
-		console.log("route Hit")
-		db.Info.update(
-			req.body,
-			{
-			where: {
-				id: req.user.id
-			}
-			}).then(function(dbPost) {
-			res.json(dbPost);
-		});
-	})
-	// app.get('/api/toggle',function(req,res){
-	// 	console.log(req.query.available);
-	// 	db.Info.update({available:req.query.available},
+	// app.put("/api/availability", (req, res)=>{
+	// 	console.log("route Hit")
+	// 	db.Info.update(
+	// 		req.body,
 	// 		{
-	// 			where:{
-	// 				UserId:req.user.id
-	// 				//available:1
+	// 		where: {
+	// 			id: req.user.id
+	// 		}
+	// 		}).then(function(dbPost) {
+	// 		res.json(dbPost);
+	// 	});
+	// })
+	app.get('/api/toggle',function(req,res){
+		console.log(req.query.available);
+		db.Info.update({available:req.query.available},
+			{
+				where:{
+					UserId:req.user.id
+					//available:1
 					
-	// 			}
+				}
 				
-	// 		}).then(result=>{
-	// 			res.json({
-	// 				available:result[0]
-	// 			})
-	// 			//console.log("The obtained result is:",result[0]);
-	// 		})
-	// });
+			}).then(result=>{
+				res.json({
+					available:result[0]
+				})
+				//console.log("The obtained result is:",result[0]);
+			})
+	});
 
 
 

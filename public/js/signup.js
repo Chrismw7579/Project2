@@ -12,7 +12,6 @@ $(document).ready(function() {
 
   //$('.dropdown-trigger').dropdown();
   populateLocationDropdown();
-  
   $('.dropdown-toggle').dropdown();
   
 
@@ -30,6 +29,7 @@ $(document).ready(function() {
 
     $('#checkboxes input:checked').each(function() {
         selectedInterests.push($(this).attr('name'));
+        
     });
 
     var userData = {
