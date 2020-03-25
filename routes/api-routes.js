@@ -89,7 +89,8 @@ module.exports = function(app) {
 			
 			db.Info.findAll({
 				where: {
-					location: data.dataValues.location
+					location: data.dataValues.location,
+					available: 1
 				}
 			}).then(data => {
 				res.json(sortByInterest(req.user.id, interests, data));
@@ -106,7 +107,7 @@ module.exports = function(app) {
 		let OthersInterests = [];
 
 		for (let i = 0; i < data.length; i++) {
-			if (id != data[i].dataValues.id && data[i].dataValues.available == 1) { // excludes the user from the list
+			if (id != data[i].dataValues.id) { // excludes the user from the list
 				
 				const obj = {
 					id: data[i].dataValues.id,
