@@ -272,7 +272,9 @@ $(document).ready(function() {
   });//End of document.ready
   
 
-  $(".dropdown-trigger").dropdown();
+  $(".dropdown-trigger").dropdown({
+    coverTrigger: false
+  });
 
 
 });

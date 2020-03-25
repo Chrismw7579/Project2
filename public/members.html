@@ -14,7 +14,7 @@
 <style>
   html,
   body {
-    height: 120%;
+    height: 150%;
     width: 100%;
     background-image: url('./img/bg1.jpg');
     background-size: cover;
@@ -41,6 +41,10 @@
         border-color: rebeccapurple;
         border-radius: 5px;
      }
+#pTagsharedInterests{
+  font-weight: bold;
+  color: rebeccapurple;
+}
 </style>
 
 <body>
@@ -80,11 +84,11 @@
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
           <div class="card-content">
             <span class="card-title">Hello!</span>
-            <p>Welcome to <p style="color:rebeccapurple; font-style: italic;">Rendezvous</p>A way to meet others who share your same interests.</p><p>Wanna hangout?</p>
+            <p>Welcome to <p style="color:rebeccapurple; font-style: italic; font-weight: bold;">Rendezvous</p>A way to meet others who share your same interests.</p><p>Wanna hangout?</p>
           </div>
           <div class="card-action">
             <button id="findPeopleBtn" class="btn btn-large indigo lighten-2 waves-effect waves-light " type="submit" name="action">Hangout</button>
-            <p style="color:lightslategray;">Change your availability if you're not looking to find anyone to hangout with at this time.</p>
+            <p style="color:lightslategray; font-weight:bold;">Change your availability if you're not looking to find anyone to hangout with at this time.</p>
           </div>
         </div>
       </div>
@@ -112,59 +116,78 @@
         <div class="col s5" id="cardsHolderDiv">
           <div class="card hoverable">
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">John Smith<i class="material-icons right">more_vert</i></span>
-              <p><a class="waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              <span class="card-title activator grey-text text-darken-4"><p id="username0">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests0">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-0" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <p id="aboutMe0">Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card hoverable">
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">John Smith<i class="material-icons right">more_vert</i></span>
-              <p><a class="waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              <span class="card-title activator grey-text text-darken-4"><p id="username1">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests1">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-1" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <p id="aboutMe1">Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card hoverable">
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">John Smith<i class="material-icons right">more_vert</i></span>
-              <p><a class="waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              <span class="card-title activator grey-text text-darken-4"><p id="username2">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests2">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-2" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <p id="aboutMe2">Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card hoverable">
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">John Smith<i class="material-icons right">more_vert</i></span>
-              <p><a class="waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              <span class="card-title activator grey-text text-darken-4"><p id="username3">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests3">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-3" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <p id="aboutMe3">Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card hoverable">
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">John Smith<i class="material-icons right">more_vert</i></span>
-              <p><a class="waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              <span class="card-title activator grey-text text-darken-4"><p id="username4">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests4">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                 <p><a id="connect-btn-4" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <p id="aboutMe4">Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
-
         </div>
     </div>
   </div>
