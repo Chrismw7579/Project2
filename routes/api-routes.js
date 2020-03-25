@@ -26,10 +26,10 @@ module.exports = function(app) {
     })
       .then(function(data) {
         
-        console.log("HIT!!");
-        console.log(data.dataValues.id);
-        console.log("END!!")
-        console.log(username + " " + location + " " + interest + " " + aboutMe + " " + available)
+        //console.log("HIT!!");
+        //console.log(data.dataValues.id);
+        //console.log("END!!")
+        //console.log(username + " " + location + " " + interest + " " + aboutMe + " " + available)
           db.Info.create({
             username: username,
             location: location,
@@ -68,7 +68,7 @@ module.exports = function(app) {
           UserId: req.user.id
         }
       }).then(function(results){
-        console.log(results);
+        //console.log(results);
         res.json({
           email: req.user.email,
           id: req.user.id,
@@ -115,12 +115,12 @@ module.exports = function(app) {
 		const compatibilityList = [];
 		
 		const UserInterests = interests.split(',');
-		console.log("data");
+		//console.log("data");
 		let OthersInterests = [];
 
-		console.log(data.length);
+		//console.log(data.length);
 		for (let i = 0; i < data.length; i++) {
-			if (id != data[i].dataValues.id) { // excludes the user from the list
+			if (id != data[i].dataValues.id && data[i].dataValues.available == 1) { // excludes the user from the list
 				
 				const obj = {
 					id: data[i].dataValues.id,
@@ -135,7 +135,7 @@ module.exports = function(app) {
 				compatibilityList.push(obj);
 			}
 		}
-		console.log(compatibilityList);
+		//console.log(compatibilityList);
 		return(findMostCompatible(5, compatibilityList));
 	};
 
@@ -143,7 +143,7 @@ module.exports = function(app) {
 	// each contain the common interests of each member then Sorts the members
 	// by the number of common interests and returns a list of objects.
 	const findMostCompatible = (count, list) => {
-		console.log('find');
+		//console.log('find');
 		const compatibilityList = [];
 		const tempList = [...list];
 		let listCount = 0;
@@ -183,7 +183,16 @@ module.exports = function(app) {
 		return(list);
 	};
 
-
-
-
+	app.put("/api/availability", (req, res)=>{
+		console.log("route Hit")
+		db.Info.update(
+			req.body,
+			{
+			  where: {
+				id: req.user.id
+			  }
+			}).then(function(dbPost) {
+			res.json(dbPost);
+		  });
+	})
 };

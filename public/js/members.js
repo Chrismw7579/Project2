@@ -3,8 +3,22 @@ const pageOne = $('#firstPage');
 const pageTwo = $('#secondPage');
 const pageThree = $('#thirdPage');
   $('#availabilitySwitch').on("click",function(){
-    console.log(document.getElementById('availabilitySwitch').checked);
-  })
+    
+      let newAvailability = {
+        available : document.getElementById('availabilitySwitch').checked ? 1 : 0
+      }
+
+      console.log(newAvailability);
+
+      $.ajax({
+        method: "PUT",
+        url: "/api/availability",
+        data: newAvailability
+      })
+        .then(function(data) {
+          console.log(data)
+      });
+  });
  
   let userId;
   let userLocation;
@@ -27,10 +41,40 @@ const pageThree = $('#thirdPage');
       pageOne.css("display", "none");
       pageTwo.css("display", "initial");
 
+      //Get a string of shared interests from the incoming data
+      function getInterests(arr){
+        let interestStr = [];
+        for(let i=0; i<arr.length; i++){
+          interestStr.push(arr[i][0]);
+        }
+        return interestStr.toString();
+      }
+
+     // $('#connect-btn-0').attr('data-id', '32');
+     //console.log($('#connect-btn-0').attr('data-id'));
+
+      for(let i=0; i<data.length; i++){
+        $(`#username${i}`).text(data[i].username);
+        $(`#sharedInterests${i}`).text(getInterests(data[i].list));
+        $(`#aboutMe${i}`).text(data[i].aboutMe);
+        //Setting data attributes for the 'connect' button to be accessed by chat functionality
+        $(`#connect-btn-${i}`).attr('data-id', data[i].id);
+        $(`#connect-btn-${i}`).attr('data-username', data[i].username);
+      }
+
       showMap(userLocation);
     });
 
   });
+
+  $('.connect-btn').on("click", function(){
+      console.log("start")
+      console.log($(this).attr('data-id'));
+      console.log($(this).data('id'));
+      console.log($(this).attr('data-username'));
+      console.log($(this).data('username'));
+      console.log('end');
+  })
 
   function showMap(userLocation){
     var map;
@@ -102,9 +146,7 @@ const pageThree = $('#thirdPage');
         })
         return marker;
     }
-
     geocode(location);
-
   }
 
 });//End of document.ready
