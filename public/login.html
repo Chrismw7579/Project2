@@ -1,59 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Hangout Login</title>
+  <title>Passport Authentication</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-<style>
-    html,
-  body {
-    height: 100%;
-    width: 100%;
-    background-image: url('./img/bg1.jpg');
-    background-size: cover;
-    background-color: lightgray;
-    margin: 0;
-    padding: 0;
-    /* background-repeat: repeat-y; */
-}
-@media screen and (max-width: 768px){
-    
-    body {
-        background-image: url("./img/bg2.jpg");
-        background-size: cover;
-    }
-}
-</style>
-
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2 style="color:white;">Login Form</h2>
-        <form class="login">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input style="border-style: solid;border-color:#9370DB;border-width: thick;" type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input style="border-style: solid;border-color:#9370DB;border-width: thick;" type="password" class="form-control" id="password-input" placeholder="Password">
-          </div>
-          <button style="border-style: solid;border-color:#9370DB;border-width: thick;" type="submit" class="btn btn-default">Login</button>
-        </form>
-        <br />
-        <p>Or sign up <a href="/signup">here</a></p>
+<div class = "row">
+  <form class = "login">
+  <div class = "col s12 m4 offset-m4">
+    <div class = "card">
+      <div class = "card-action indigo lighten-2 white-text">
+        <h3 class = "login-title">Login</h3>
+      </div>
+      <div class = "card-content">
+        <div class = "form-field">
+          <label for = "email">Email</label>
+          <input type = "text" id = "email-input">
+        </div><br>
+
+        <div class = "form-field">
+          <label for = "password">Password</label>
+          <input type = "password" id = "password-input">
+        </div><br>
+
+        <div class = "form-field">
+          <button class = "btn-large waves-effect waves-dark indigo lighten-2" type = "submit" style = "width: 100%">Login</button>
+        </div><br>
+        <p>Or sign up <a href="/signup">here.</a></p>
+
+        <div style="display: none; color: red;" id="alert" class="alert alert-danger" role="alert">
+          <strong>Error:  </strong><span class="msg"></span>
+        </div>
+
       </div>
     </div>
   </div>
+</form>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/login.js"></script>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 
 </body>
 

@@ -13,6 +13,7 @@ $(document).ready(function() {
     };
 
     if (!userData.email || !userData.password) {
+      handleLoginErr("Fields cannot be empty");
       return;
     }
 
@@ -34,6 +35,16 @@ $(document).ready(function() {
       })
       .catch(function(err) {
         console.log(err);
+        if(err.responseText === "Unauthorized"){
+          handleLoginErr("Incorrect E-mail or password");
+        }else{
+          handleLoginErr("Something went wrong; Please try again");
+        }
       });
+  }
+
+  function handleLoginErr(err) {
+    $("#alert .msg").text(err);//.responseJSON
+    $("#alert").fadeIn(500);
   }
 });

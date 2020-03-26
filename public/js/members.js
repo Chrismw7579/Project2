@@ -2,6 +2,8 @@ $(document).ready(function() {
 const pageOne = $('#firstPage');
 const pageTwo = $('#secondPage');
 const pageThree = $('#thirdPage');
+const pageDelete = $('#deletePage');
+const pageNoMatch = $('#noMatchPage');
 
   $('#availabilitySwitch').on("click",function(){
     
@@ -23,11 +25,13 @@ const pageThree = $('#thirdPage');
           pageTwo.css('display', 'none');
           pageThree.css('display', 'initial');
           pageOne.css('display', 'none');
+          pageNoMatch.css('display', 'none');
         }
         else{
           pageTwo.css('display', 'none');
           pageThree.css('display', 'none');
           pageOne.css('display', 'initial');
+          pageNoMatch.css('display', 'none');
         }
       });
   });
@@ -75,7 +79,13 @@ const pageThree = $('#thirdPage');
      // $('#connect-btn-0').attr('data-id', '32');
      //console.log($('#connect-btn-0').attr('data-id'));
 
+     if(data.length === 0){
+      pageTwo.css('display', 'none');
+      pageNoMatch.css('display', 'initial');
+     }
+
       for(let i=0; i<data.length; i++){
+        $(`#card-id-${i}`).css('display', 'block');
         $(`#username${i}`).text(data[i].username);
         $(`#sharedInterests${i}`).text(getInterests(data[i].list));
         $(`#aboutMe${i}`).text(data[i].aboutMe);
@@ -170,5 +180,33 @@ const pageThree = $('#thirdPage');
     }
     geocode(location);
   }
+
+
+  //event listener for deleting account
+
+	$('#delete-account').on('click', function(e){
+
+		e.preventDefault();
+		pageOne.css('display', 'none');
+		pageTwo.css('display', 'none');
+    pageThree.css('display', 'none');
+    pageNoMatch.css('display', 'none');
+		pageDelete.css('display', 'block');
+
+		$('#deletebtn').on('click', function(){
+			$.ajax({
+				method: 'DELETE',
+				url: `/api/users/${userId}`
+			})
+				.then(function(data) {
+					console.log(data);
+				});
+    });
+    
+  });
+
+  $(".dropdown-trigger").dropdown({
+    coverTrigger: false
+  });
 
 });//End of document.ready

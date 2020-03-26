@@ -194,5 +194,18 @@ module.exports = function(app) {
 			}).then(function(dbPost) {
 			res.json(dbPost);
 		  });
-	})
+	});
+
+	app.delete('/api/users/:id', (req, res) => {
+		console.log("ID " + req.params.id);
+		db.User.destroy({
+		  where: {
+			id: req.params.id
+		  }
+		}).then(function() {
+		  console.log(req.body);
+		  console.log('Deletion successful');
+		  res.redirect('/');
+		});
+	});
 };

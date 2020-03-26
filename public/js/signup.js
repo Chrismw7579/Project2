@@ -8,7 +8,7 @@ $(document).ready(function() {
   var interestInput = $("input#interest-input");
   var aboutMeInput = $("#about-input");
 
-  let cityNameInput;
+  let cityNameInput = "";
 
   populateLocationDropdown();
   $('.dropdown-toggle').dropdown();
@@ -39,7 +39,14 @@ $(document).ready(function() {
       available: 1
     };
 
-    if (!userData.email || !userData.password) {
+    // Make sure all the fields have some data
+    if (!userData.email || !userData.password || !userData.username || !userData.location || !userData.interest || !userData.aboutMe) {
+      handleLoginErr("Fields cannot be blank");
+      return;
+    }
+    //Verify the min requirements for e-mail format
+    if(!(/.+@.+\..+/gi.test(userData.email))){
+      handleLoginErr("Please verify your email. The format doesn't look right!");
       return;
     }
     // If we have an email and password, run the signUpUser function
@@ -71,7 +78,7 @@ $(document).ready(function() {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+    $("#alert .msg").text(err);//.responseJSON
     $("#alert").fadeIn(500);
   }
 
