@@ -18,7 +18,9 @@ $(document).ready(function() {
     $(".dropdown-item").on("click", function(){
       cityNameInput = $(this)[0].text;
       console.log(cityNameInput);
+
       $('#displaySelectedLocation').text(cityNameInput);
+
   });
 
  // When the signup button is clicked, we validate the email and password are not blank
@@ -72,6 +74,7 @@ $(document).ready(function() {
       available: available
     })
       .then(function(data) {
+
         
         window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
@@ -88,6 +91,7 @@ $(document).ready(function() {
 
   function handleLoginErr(err) {
     console.log("Hit in catch part");
+
     $("#alert .msg").text(err);//.responseJSON
     $("#alert").fadeIn(500);
   }

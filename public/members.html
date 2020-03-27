@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Hangout</title>
   <meta charset="UTF-8">
@@ -10,6 +11,9 @@
   <link href="stylesheets/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+
 </head>
 <style>
   html,
@@ -21,55 +25,65 @@
     background-color: lightgray;
     margin: 0;
     padding: 0;
-}
-.container{
-  width: 85%;
-}
-@media screen and (max-width: 768px){
-    
+
+  }
+
+  .container {
+    width: 85%;
+  }
+
+  @media screen and (max-width: 768px) {
+
     body {
-        background-image: url("./img/bg2.jpg");
-        background-size: cover;
+      background-image: url("./img/bg2.jpg");
+      background-size: cover;
     }
-}
-#map {
-        height: 200px;
-        width: 90%;
-        margin-top: 5px;
-        margin-left: 20px;
-        border-style: solid;
-        border-color: rebeccapurple;
-        border-radius: 5px;
-     }
-#pTagsharedInterests{
-  font-weight: bold;
-  color: rebeccapurple;
-}
+  }
+
+  #map {
+    height: 200px;
+    width: 90%;
+    margin-top: 5px;
+    margin-left: 20px;
+    border-style: solid;
+    border-color: rebeccapurple;
+    border-radius: 5px;
+  }
+
+  #pTagsharedInterests {
+    font-weight: bold;
+    color: rebeccapurple;
+  }
 </style>
 
 <body>
+  <div id="userInfo" userId="" userEmail=""></div>
 
   <ul id="dropdown1" class="dropdown-content">
     <li><a href="/logout" style="color:rebeccapurple; font-weight:bold;">Logout</a></li>
-    <li><a href="" id = "delete-account" style="color:rebeccapurple; font-weight: bold;">Delete Account</a></li>
+    <li><a href="" id="delete-account" style="color:rebeccapurple; font-weight: bold;">Delete Account</a></li>
     <li class="divider"></li>
   </ul>
-  
+
+
   <nav>
 
     <div class="nav-wrapper indigo lighten-2">
 
       <a href="#" class="brand-logo right m-2" style="margin-right: 10px">Welcome <span class="member-name"></span></a>
-        <ul id="nav-mobile" class="left m-2">
-          <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><span class = "hide-on-med-and-down">Settings</span><i class="material-icons left">arrow_drop_down</i></a></li>
-        </ul>          
-            <div class="switch">
-              <label>
-                <input type="checkbox" id="availabilitySwitch">
-                  <span class="lever"></span>
-                  <span  style="color: white;">Available</span>
-              </label>
-            </div> 
+
+      <ul id="nav-mobile" class="left m-2">
+        <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><span
+              class="hide-on-med-and-down">Settings</span><i class="material-icons left">arrow_drop_down</i></a></li>
+      </ul>
+      <div class="switch">
+        <label>
+          <input type="checkbox" id="availabilitySwitch">
+          <span class="lever"></span>
+          <span style="color: white;">Available</span>
+        </label>
+      </div>
+
     </div>
 
   </nav>
@@ -81,17 +95,24 @@
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
           <div class="card-content">
             <span class="card-title">Hello!</span>
-            <p>Welcome to <p style="color:rebeccapurple; font-style: italic; font-weight: bold;">Rendezvous</p>A way to meet others who share your same interests.</p><p>Wanna hangout?</p>
+
+            <p>Welcome to <p style="color:rebeccapurple; font-style: italic; font-weight: bold;">Rendezvous</p>A way to
+              meet others who share your same interests.</p>
+            <p>Wanna hangout?</p>
           </div>
           <div class="card-action">
-            <button id="findPeopleBtn" class="btn btn-large indigo lighten-2 waves-effect waves-light pulse" type="submit" name="action">Hangout</button>
-            <p style="color:lightslategray; font-weight:bold;">Change your availability if you're not looking to find anyone to hangout with at this time.</p>
+            <button id="findPeopleBtn" class="btn btn-large indigo lighten-2 waves-effect waves-light pulse"
+              type="submit" name="action">Hangout</button>
+            <p style="color:lightslategray; font-weight:bold;">Change your availability if you're not looking to find
+              anyone to hangout with at this time.</p>
+
           </div>
         </div>
       </div>
     </div>
 
   </div>
+
 
   <div class="container" id="secondPage" style = "display: none;">
     <div class="row">
@@ -186,6 +207,7 @@
             </div>
           </div>
         </div>
+
     </div>
   </div>
 
@@ -195,11 +217,15 @@
       <div class="col s12 m6 offset-m3 my-wrapper valign-wrapper center-align">
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
           <div class="card-content">
-            <span class="card-title" style="color:rebeccapurple;">Hey there!<br>We hope you're enjoying the conversation.</span>
-           
+
+            <span class="card-title" style="color:rebeccapurple;">Hey there!<br>We hope you're enjoying the
+              conversation.</span>
+
           </div>
           <div class="card-action">
-            <p style="color:lightslategray;">Make yourself "available" if you would like to find someone to hangout with.</p>
+            <p style="color:lightslategray;">Make yourself "available" if you would like to find someone to hangout
+              with.</p>
+
           </div>
         </div>
       </div>
@@ -218,8 +244,12 @@
             <p>Are you sure you want to delete your account?</p>
           </div>
           <div class="card-action">
-            <a href = "/" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">Delete Account</a>
-            <p><a href="/members" style="color:rebeccapurple; font-weight: bold;">I would like to keep my account.</a></p>
+
+            <a href="/" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">Delete
+              Account</a>
+            <p><a href="/members" style="color:rebeccapurple; font-weight: bold;">I would like to keep my account.</a>
+            </p>
+
           </div>
 
         </div>
@@ -234,10 +264,14 @@
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
 
           <div class="card-content">
-            <span class="card-title" style="color:rebeccapurple;">We're sorry! Currently there is no one we know in your area, that shares the same interests as your's. Please come back later.</span>
+
+            <span class="card-title" style="color:rebeccapurple;">We're sorry! Currently there is no one we know in your
+              area, that shares the same interests as your's. Please come back later.</span>
           </div>
           <div class="card-action">
-            <a href = "/logout" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">OK, I will check back later.</a>
+            <a href="/logout" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">OK, I will
+              check back later.</a>
+
           </div>
 
         </div>
@@ -245,17 +279,22 @@
     </div>
   </div>
 
-  
 
 
 
-<script type="text/javascript" src="js/members.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANpJutX_zMEG-06f_Nb7iVDBZj7EwlCdY&libraries=places"></script>
+
+  <script type="text/javascript" src="js/members.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANpJutX_zMEG-06f_Nb7iVDBZj7EwlCdY&libraries=places"></script>
+
 
 </body>
 
