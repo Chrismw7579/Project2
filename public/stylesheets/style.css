@@ -2,3 +2,24 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+html,
+body {
+  height: 135%;
+  width: 100%;
+  background-image: url('../img/bg1.jpg');
+  background-size: cover;
+  background-color: lightgray;
+  margin: 0;
+  padding: 0;
+  /* background-repeat: repeat-y; */
+}
+
+#chat-box {
+  background-color: white;
+  height: 700px;
+  margin-left: 9%;
+  margin-right: 9%;
+  border: 2px solid rebeccapurple;
+  border-radius: 1em;
+}
