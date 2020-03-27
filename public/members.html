@@ -11,7 +11,9 @@
   <link href="stylesheets/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
   <script src="/socket.io/socket.io.js"></script>
+
 </head>
 <style>
   html,
@@ -23,6 +25,7 @@
     background-color: lightgray;
     margin: 0;
     padding: 0;
+
   }
 
   .container {
@@ -62,11 +65,13 @@
     <li class="divider"></li>
   </ul>
 
+
   <nav>
 
     <div class="nav-wrapper indigo lighten-2">
 
       <a href="#" class="brand-logo right m-2" style="margin-right: 10px">Welcome <span class="member-name"></span></a>
+
       <ul id="nav-mobile" class="left m-2">
         <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><span
               class="hide-on-med-and-down">Settings</span><i class="material-icons left">arrow_drop_down</i></a></li>
@@ -78,6 +83,7 @@
           <span style="color: white;">Available</span>
         </label>
       </div>
+
     </div>
 
   </nav>
@@ -89,6 +95,7 @@
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
           <div class="card-content">
             <span class="card-title">Hello!</span>
+
             <p>Welcome to <p style="color:rebeccapurple; font-style: italic; font-weight: bold;">Rendezvous</p>A way to
               meet others who share your same interests.</p>
             <p>Wanna hangout?</p>
@@ -98,6 +105,7 @@
               type="submit" name="action">Hangout</button>
             <p style="color:lightslategray; font-weight:bold;">Change your availability if you're not looking to find
               anyone to hangout with at this time.</p>
+
           </div>
         </div>
       </div>
@@ -105,119 +113,106 @@
 
   </div>
 
-  <div class="container" id="secondPage" style="display: none;">
+
+  <div class="container" id="secondPage" style = "display: none;">
     <div class="row">
-      <div class="col s12 m7">
-        <div class="row">
-          <div class="col shadow" id="map">
-            Here goes Map
-
+        <div class="col s12 m7">
+          <div class="row">
+              <div class="col shadow" id="map">
+                Here goes Map
+                
+              </div>
           </div>
-        </div>
 
-        <div id="chat-box" class="row">
-          <div class="col s12 m7">
-            <div id="message-container"></div>
+          <div id="chat-box" class="row">
+              <div class="col s12 m7">
+                <div id="message-container"></div>
             <form id="send-container">
               <input type="text" id="message-input">
               <button type="submit" id="send-button">Send</button>
               <b><p id="talkingTo"></p></b>
             </form>
+              </div>
+          </div>
+
+        </div>
+        <div class="col s12 m5" id="cardsHolderDiv">
+          <div id= "card-id-0" style="display: none" class="card hoverable">
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><p id="username0">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests0">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-0" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">More About Me<i class="material-icons right">close</i></span>
+              <p id="aboutMe0">Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+
+          <div id= "card-id-1" style="display: none" class="card hoverable">
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><p id="username1">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests1">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-1" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">More About Me<i class="material-icons right">close</i></span>
+              <p id="aboutMe1">Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+
+          <div id= "card-id-2" style="display: none" class="card hoverable">
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><p id="username2">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests2">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-2" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">More About Me<i class="material-icons right">close</i></span>
+              <p id="aboutMe2">Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+
+          <div id= "card-id-3" style="display: none" class="card hoverable">
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><p id="username3">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests3">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                <p><a id="connect-btn-3" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">More About Me<i class="material-icons right">close</i></span>
+              <p id="aboutMe3">Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+
+          <div id= "card-id-4" style="display: none" class="card hoverable">
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><p id="username4">John Smith</p><i class="material-icons right">more_vert</i></span>
+              <p id="pTagsharedInterests">Shared Interests</p>
+              <p style="font-style: italic;" id="sharedInterests4">Hiking, Travel, Fishing, Blogging</p>
+              <div class="card-action">
+                 <p><a id="connect-btn-4" class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
+              </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">More About Me<i class="material-icons right">close</i></span>
+              <p id="aboutMe4">Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
           </div>
         </div>
 
-      </div>
-      <div class="col s12 m5" id="cardsHolderDiv">
-        <div id="card-id-0" style="display: none" class="card hoverable">
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">
-              <p id="username0">John Smith</p><i class="material-icons right">more_vert</i>
-            </span>
-            <p id="pTagsharedInterests">Shared Interests</p>
-            <p style="font-style: italic;" id="sharedInterests0">Hiking, Travel, Fishing, Blogging</p>
-            <div class="card-action">
-              <p><a id="connect-btn-0"
-                  class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
-            </div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p id="aboutMe0">Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-
-        <div id="card-id-1" style="display: none" class="card hoverable">
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">
-              <p id="username1">John Smith</p><i class="material-icons right">more_vert</i>
-            </span>
-            <p id="pTagsharedInterests">Shared Interests</p>
-            <p style="font-style: italic;" id="sharedInterests1">Hiking, Travel, Fishing, Blogging</p>
-            <div class="card-action">
-              <p><a id="connect-btn-1"
-                  class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
-            </div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p id="aboutMe1">Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-
-        <div id="card-id-2" style="display: none" class="card hoverable">
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">
-              <p id="username2">John Smith</p><i class="material-icons right">more_vert</i>
-            </span>
-            <p id="pTagsharedInterests">Shared Interests</p>
-            <p style="font-style: italic;" id="sharedInterests2">Hiking, Travel, Fishing, Blogging</p>
-            <div class="card-action">
-              <p><a id="connect-btn-2"
-                  class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
-            </div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p id="aboutMe2">Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-
-        <div id="card-id-3" style="display: none" class="card hoverable">
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">
-              <p id="username3">John Smith</p><i class="material-icons right">more_vert</i>
-            </span>
-            <p id="pTagsharedInterests">Shared Interests</p>
-            <p style="font-style: italic;" id="sharedInterests3">Hiking, Travel, Fishing, Blogging</p>
-            <div class="card-action">
-              <p><a id="connect-btn-3"
-                  class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
-            </div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p id="aboutMe3">Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-
-        <div id="card-id-4" style="display: none" class="card hoverable">
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">
-              <p id="username4">John Smith</p><i class="material-icons right">more_vert</i>
-            </span>
-            <p id="pTagsharedInterests">Shared Interests</p>
-            <p style="font-style: italic;" id="sharedInterests4">Hiking, Travel, Fishing, Blogging</p>
-            <div class="card-action">
-              <p><a id="connect-btn-4"
-                  class="connect-btn waves-effect waves-light btn btn-small indigo lighten-2">CONNECT</a></p>
-            </div>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p id="aboutMe4">Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -227,6 +222,7 @@
       <div class="col s12 m6 offset-m3 my-wrapper valign-wrapper center-align">
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
           <div class="card-content">
+
             <span class="card-title" style="color:rebeccapurple;">Hey there!<br>We hope you're enjoying the
               conversation.</span>
 
@@ -234,6 +230,7 @@
           <div class="card-action">
             <p style="color:lightslategray;">Make yourself "available" if you would like to find someone to hangout
               with.</p>
+
           </div>
         </div>
       </div>
@@ -252,10 +249,12 @@
             <p>Are you sure you want to delete your account?</p>
           </div>
           <div class="card-action">
+
             <a href="/" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">Delete
               Account</a>
             <p><a href="/members" style="color:rebeccapurple; font-weight: bold;">I would like to keep my account.</a>
             </p>
+
           </div>
 
         </div>
@@ -270,18 +269,21 @@
         <div class="card firstPagecard hoverable" style="margin-top:10%; ">
 
           <div class="card-content">
+
             <span class="card-title" style="color:rebeccapurple;">We're sorry! Currently there is no one we know in your
               area, that shares the same interests as your's. Please come back later.</span>
           </div>
           <div class="card-action">
             <a href="/logout" id="deletebtn" class="btn btn-large indigo lighten-2 waves-effect waves-light ">OK, I will
               check back later.</a>
+
           </div>
 
         </div>
       </div>
     </div>
   </div>
+
 
 
 
@@ -297,6 +299,7 @@
 
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANpJutX_zMEG-06f_Nb7iVDBZj7EwlCdY&libraries=places"></script>
+
 
 </body>
 

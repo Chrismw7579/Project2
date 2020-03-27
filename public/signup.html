@@ -34,6 +34,11 @@
   box-shadow: 12px 12px 12px #333;
   overflow: hidden;
 }
+
+.dropdown-item{
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px){
   body {
     background-image: url("./img/bg2.jpg");
@@ -75,7 +80,10 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             </ul>
+
+            <p style="color: black; cursor: pointer;" id="displaySelectedLocation"></p>
           </div>
+          
 
         <p class="para">Choose your topics of interest. This will be used to help us find like-minded people for you to hangout with.</p>
         <br>

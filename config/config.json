@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+
     "password": "password1",
+
+  
+
     "database": "hangout",
     "host": "127.0.0.1",
     "dialect": "mysql"

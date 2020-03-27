@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   const socket = io('/');
   let currentUserEmail = $('#userInfo').attr('userEmail');
@@ -35,12 +36,15 @@ $(document).ready(function () {
 
         if (!newAvailability.available) {
           console.log(newAvailability);
+
           pageTwo.css('display', 'none');
           pageThree.css('display', 'initial');
           pageOne.css('display', 'none');
           pageNoMatch.css('display', 'none');
         }
+
         else {
+
           pageTwo.css('display', 'none');
           pageThree.css('display', 'none');
           pageOne.css('display', 'initial');
@@ -59,6 +63,8 @@ $(document).ready(function () {
     $('#userInfo').attr('userEmail', userEmail);
     currentUserEmail = $('#userInfo').attr('userEmail');
     currentUserId = $('#userInfo').attr('userId');
+    $(".member-name").text(data.username);
+    document.getElementById('availabilitySwitch').checked = data.available;
     if (data.available) {
       pageTwo.css('display', 'none');
       pageThree.css('display', 'none');
@@ -77,19 +83,23 @@ $(document).ready(function () {
     $.get("/api/others", {
       id: userId
     }).then(function (data) {
+
       console.log(data);
 
       pageOne.css("display", "none");
       pageTwo.css("display", "initial");
 
       //Get a string of shared interests from the incoming data
+
       function getInterests(arr) {
         let interestStr = [];
         for (let i = 0; i < arr.length; i++) {
+
           interestStr.push(arr[i][0]);
         }
         return interestStr.toString();
       }
+
 
       // $('#connect-btn-0').attr('data-id', '32');
       //console.log($('#connect-btn-0').attr('data-id'));
@@ -100,6 +110,7 @@ $(document).ready(function () {
       }
 
       for (let i = 0; i < data.length; i++) {
+
         $(`#card-id-${i}`).css('display', 'block');
         $(`#username${i}`).text(data[i].username);
         $(`#sharedInterests${i}`).text(getInterests(data[i].list));
@@ -113,6 +124,7 @@ $(document).ready(function () {
     });
 
   });
+
 
   // =============================================================================================
 
@@ -183,6 +195,7 @@ $(document).ready(function () {
   // =============================================================================================
 
   function showMap(userLocation) {
+
     var map;
     var service;
     var infowindow;
@@ -192,6 +205,7 @@ $(document).ready(function () {
     function geocode(location) {
       //let cityInput = $("#city-input").val().trim();
       let cityInput = "Redmond";
+
       let geocodeURL = `https://us1.locationiq.com/v1/search.php?key=94f01861555da1&q=${location},Washington,USA&format=json`
       $.ajax({
         url: geocodeURL,
@@ -218,15 +232,18 @@ $(document).ready(function () {
         gestureHandling: 'greedy'
       });
 
+
       var request = {
         query: 'cafe',
         location: pyrmont,
         radius: '1000',
       };
 
+
       service = new google.maps.places.PlacesService(map);
       service.textSearch(request, callback);
     }
+
 
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -234,14 +251,17 @@ $(document).ready(function () {
           var place = results[i];
           let marker = createMarker(results[i].geometry.location);
           //console.log(results);
+
           marker.addListener('click', function () {
             map.setZoom(13);
             map.setCenter(marker.getPosition());
+
           });
 
         }
       }
     }
+
 
     var createMarker = function (latLon) {
       console.log("HIT HERE")
@@ -251,12 +271,14 @@ $(document).ready(function () {
         title: 'cafe'
       })
       return marker;
+
     }
     geocode(location);
   }
 
 
   //event listener for deleting account
+
 
   $('#delete-account').on('click', function (e) {
 
@@ -276,6 +298,7 @@ $(document).ready(function () {
           console.log(data);
         });
     });
+
 
   });
 
