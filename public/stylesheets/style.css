@@ -15,6 +15,7 @@ body {
   /* background-repeat: repeat-y; */
 }
 
+
 #chat-box {
   background-color: white;
   height: 700px;
@@ -23,3 +24,4 @@ body {
   border: 2px solid rebeccapurple;
   border-radius: 1em;
 }
+
