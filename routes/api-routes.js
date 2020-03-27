@@ -166,7 +166,7 @@ module.exports = function (app) {
 		let interests = '';
 		db.Info.findOne({
 			where: {
-				id: req.user.id
+				UserId: req.user.id
 			}
 		}).then((data) => {
 
