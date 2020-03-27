@@ -80,7 +80,7 @@ module.exports = function(app) {
 		let interests = '';
 		db.Info.findOne({
 			where: {
-				id: req.user.id
+				UserId: req.user.id
 			}
 		}).then((data) => {
 
@@ -107,7 +107,7 @@ module.exports = function(app) {
 		let OthersInterests = [];
 
 		for (let i = 0; i < data.length; i++) {
-			if (id != data[i].dataValues.id) { // excludes the user from the list
+			if (id != data[i].dataValues.UserId) { // excludes the user from the list
 				
 				const obj = {
 					id: data[i].dataValues.id,
