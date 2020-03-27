@@ -45,7 +45,10 @@ module.exports = function(app) {
           });   
       })
       .catch(function(err) {
-        res.status(401).json(err);
+		console.log("HIT HERE");
+		console.log(err);
+		//res.json(err);
+       res.status(401).json(err);
       });
   });
 
@@ -91,9 +94,10 @@ module.exports = function(app) {
 		let interests = '';
 		db.Info.findOne({
 			where: {
-				id: req.user.id
+				UserId: req.user.id
 			}
 		}).then((data) => {
+			console.log(data);
 
 			// Querys server for all members with same location
 			interests = data.dataValues.interest;
@@ -105,6 +109,8 @@ module.exports = function(app) {
 			}).then(data => {
 				res.json(sortByInterest(req.user.id, interests, data));
 			});
+		}).catch(function(err){
+			console.log(err);
 		});
 	});
 
@@ -120,7 +126,7 @@ module.exports = function(app) {
 
 		//console.log(data.length);
 		for (let i = 0; i < data.length; i++) {
-			if (id != data[i].dataValues.id && data[i].dataValues.available == 1) { // excludes the user from the list
+			if (id != data[i].dataValues.UserId && data[i].dataValues.available == 1) { // excludes the user from the list
 				
 				const obj = {
 					id: data[i].dataValues.id,
@@ -189,7 +195,7 @@ module.exports = function(app) {
 			req.body,
 			{
 			  where: {
-				id: req.user.id
+				UserId: req.user.id
 			  }
 			}).then(function(dbPost) {
 			res.json(dbPost);
