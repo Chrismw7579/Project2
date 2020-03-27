@@ -161,17 +161,21 @@ module.exports = function (app) {
 
 
 	// Route for returning to the user other members with the most common interests
+
 	app.get("/api/others", (req, res) => {
 		// Finds the users location
 		let interests = '';
 		db.Info.findOne({
 			where: {
-				id: req.user.id
+
+				UserId: req.user.id
 			}
 		}).then((data) => {
+			console.log(data);
 
 			// Querys server for all members with same location
 			interests = data.dataValues.interest;
+			
 
 			db.Info.findAll({
 				where: {
@@ -180,6 +184,10 @@ module.exports = function (app) {
 			}).then(data => {
 				res.json(sortByInterest(req.user.id, interests, data));
 			});
+
+		}).catch(function(err){
+			console.log(err);
+
 		});
 	});
 
@@ -195,8 +203,9 @@ module.exports = function (app) {
 
 		//console.log(data.length);
 		for (let i = 0; i < data.length; i++) {
-			if (id != data[i].dataValues.id && data[i].dataValues.available == 1) { // excludes the user from the list
 
+			if (id != data[i].dataValues.UserId && data[i].dataValues.available == 1) { // excludes the user from the list
+				
 				const obj = {
 					id: data[i].dataValues.id,
 					username: data[i].dataValues.username,
@@ -211,7 +220,9 @@ module.exports = function (app) {
 			}
 		}
 		//console.log(compatibilityList);
-		return (findMostCompatible(5, compatibilityList));
+
+		return(findMostCompatible(5, compatibilityList));
+
 	};
 
 	// Takes a count for the number of objects to return and a list of objects that 
@@ -222,6 +233,7 @@ module.exports = function (app) {
 		const compatibilityList = [];
 		const tempList = [...list];
 		let listCount = 0;
+
 
 		while (listCount < count && tempList.length > 0) {
 			let index = 0;
@@ -235,12 +247,15 @@ module.exports = function (app) {
 				}
 			}
 
+
 			tempList.splice(index, 1);
 			compatibilityList.push(mostInCommon);
 			listCount++;
 		}
 		// console.log(compatibilityList);
+
 		return (compatibilityList);
+
 	};
 
 	// Takes two lists of interests as parameters and returns a list with common interests
@@ -254,26 +269,31 @@ module.exports = function (app) {
 					count++;
 				}
 			}
+
 		}
 		return (list);
 	};
 
 	app.put("/api/availability", (req, res) => {
+
 		console.log("route Hit")
 		db.Info.update(
 			req.body,
 			{
-				where: {
-					id: req.user.id
-				}
-			}).then(function (dbPost) {
-				res.json(dbPost);
-			});
+
+			  where: {
+				UserId: req.user.id
+			  }
+			}).then(function(dbPost) {
+			res.json(dbPost);
+		  });
+
 	});
 
 	app.delete('/api/users/:id', (req, res) => {
 		console.log("ID " + req.params.id);
 		db.User.destroy({
+
 			where: {
 				id: req.params.id
 			}
@@ -291,6 +311,7 @@ module.exports = function (app) {
 			}
 		}).then((data) => {
 			res.json(data.available);
+
 		});
 	});
 };

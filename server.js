@@ -1,3 +1,4 @@
+
 /* eslint-disable linebreak-style */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable linebreak-style */
@@ -12,6 +13,7 @@ var app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 
@@ -20,9 +22,11 @@ var PORT = process.env.PORT || 8080;
 var db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
@@ -34,6 +38,7 @@ require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
+
 db.sequelize.sync().then(function () {
   server.listen(PORT, function () {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
@@ -95,3 +100,4 @@ io.on('connection', socket => {
 
   });
 });
+

@@ -3,67 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangout</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <style>
-          html,
-          body {
-            height: 100%;
-            width: 100%;
-            background-image: url('./img/bg1.jpg');
-            background-size: cover;
-            color: black;
-            margin: 0;
-            padding: 0;
-          }
-          .portLink{
-              color: black;
-          }
-          p{
-            letter-spacing: 2px;
-            color: white;
-            font-size: 55px;
-          }
-          h6{
-              color: #9370DB;
-              font-style: oblique;
-              margin-left: 20%;
-
-          }
-          @media screen and (max-width: 768px){
-    
-            body {
-                background-image: url("./img/bg2.jpg");
-                background-size: cover;
-            }
-    }
-    </style>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
+    <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="d-flex flex-column flex-row-reverse align-items-right px-md-4 mb-3">
-        <nav class=" navbar navbar-expand-lg navbar-light"> 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link border shadow" style="color:white; background-color: #9370DB;" href="/signup">Login/Register</a>
-                </li>
-            </div>
-        </nav>
-    </div>
-    <div class="container-fluid d-flex align-items-center justify-content-center h-50 flex-column">
-        <div>
-          <p >Rendezvous</p>
-          <h6>A place to hangout</h6>
-        </div> 
-    </div>
+    <style>
+        html,
+        body {
+          height: 100%;
+          width: 100%;
+          background-image: url('./img/bg1.jpg');
+          background-size: cover;
+          color: black;
+          margin: 0;
+          padding: 0;
+        }
+        .portLink{
+            color: black;
+        }
+        p{
+          letter-spacing: 2px;
+          color: white;
+          font-family:'Courgette', sans-serif;
+          font-size: 65px;
+          text-shadow: 3px 3px #7452ba;
+          margin-bottom: 25px;
+        }
+        h5{
+            color: #9370DB;
+            font-family:'Dosis', sans-serif;
+            font-weight: bold;
+            margin-left: 20%;
+        }
+        #title{
+            margin-top:30%;
+        }
+        @media screen and (max-width: 768px){
+          body {
+              background-image: url("./img/bg2.jpg");
+              background-size: cover;
+          }
+  }
+  </style>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+          <br>
+          <a href="/signup" class="waves-effect waves-light btn indigo lighten-2 shadow right" style ="margin-right:20px; box-shadow: 12px 12px 12px #333;">Login/Register</a>
+          <div class = "row">
+              <div class = "col s12 m4 offset-m4">
+                <div class="center-align" id="title">
+                    <p>Rendezvous</p>
+                    <h5 style="margin-top:-30px;">A place to hangout</h5>
+
+                </div>
+              </div>
+          </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

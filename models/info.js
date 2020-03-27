@@ -2,8 +2,10 @@ module.exports = function(sequelize, DataTypes) {
     var Info = sequelize.define("Info", {
       username: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+
+        allowNull: false
+
+      
       },
       location: {
         type: DataTypes.STRING,
