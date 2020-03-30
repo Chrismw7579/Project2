@@ -8,7 +8,7 @@ Rendezvous is a place where someone can find like minded people with common inte
 Installation:
 
 The technologies required for this site are as follows
-HTML, javascript, css, Node.js, express, express-session, socket.io, http, path, materialize, bootstrap, sequelize, mysql, bcryptjs, passport, passport-local, google maps api
+HTML, javascript, css, Node.js, express, cookie-session, socket.io, http, path, materialize, bootstrap, sequelize, mysql, bcryptjs, passport, passport-local, google maps api
 
 
 Credits:
